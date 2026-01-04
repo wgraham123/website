@@ -16,7 +16,7 @@ resource "google_cloudfunctions2_function" "hello_world" {
 
   service_config {
     max_instance_count = 1
-    available_memory   = "128M"
+    available_memory   = "128Mi"
     timeout_seconds    = 15
   }
 }
