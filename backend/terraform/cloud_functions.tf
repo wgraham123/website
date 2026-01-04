@@ -1,5 +1,5 @@
 resource "google_cloudfunctions_function" "function" {
-  name        = "hello_world_${random_string.random_suffix}"
+  name        = "hello_world_${random_string.random_suffix.result}"
   description = "Test function"
   runtime     = "python39"
 
