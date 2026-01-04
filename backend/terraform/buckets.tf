@@ -1,5 +1,5 @@
 resource "google_storage_bucket" "function_source_code_bucket" {
-  name     = "test_bucket_fh285"
+  name     = "function_source_code_bucket_${random_string.random_suffix.result}"
   location = "europe-west2"
   project  = var.project_id
 
