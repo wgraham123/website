@@ -3,6 +3,11 @@ variable "project_id" {
   default = "potent-thought-483207-v4"
 }
 
+variable "location" {
+  type    = string
+  default = "europe-west2"
+}
+
 resource "random_string" "random_suffix" {
   length  = 6
   special = false

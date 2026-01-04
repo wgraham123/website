@@ -1,8 +1,6 @@
-resource "google_cloudfunctions_function_iam_member" "invoker" {
-  project        = google_cloudfunctions_function.hello_world.project
-  region         = google_cloudfunctions_function.hello_world.region
-  cloud_function = google_cloudfunctions_function.hello_world.name
-
-  role   = "roles/cloudfunctions.invoker"
-  member = "allUsers"
+resource "google_cloud_run_service_iam_member" "member" {
+  location = google_cloudfunctions2_function.hello_world.location
+  service  = google_cloudfunctions2_function.hello_world.name
+  role     = "roles/run.invoker"
+  member   = "allUsers"
 }
