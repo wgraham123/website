@@ -1,7 +1,7 @@
 resource "google_cloudfunctions_function" "hello_world" {
-  name        = "hello_world_${random_string.random_suffix.result}"
+  name        = "hello-world"
   description = "Test function"
-  runtime     = "python39"
+  runtime     = "python314"
 
   available_memory_mb   = 128
   source_archive_bucket = google_storage_bucket.function_source_code_bucket.name
