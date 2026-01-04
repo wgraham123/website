@@ -13,7 +13,7 @@ data "archive_file" "hello_world_zip" {
 }
 
 resource "google_storage_bucket_object" "hello_world_source_code" {
-  name   = "hello_world.zip"
+  name   = "hello_world_${data.archive_file.hello_world_zip.output_md5}.zip"
   bucket = google_storage_bucket.function_source_code_bucket.name
   source = data.archive_file.hello_world_zip.output_path
 }
