@@ -19,6 +19,4 @@ resource "google_cloudfunctions2_function" "hello_world" {
     available_memory   = "128Mi"
     timeout_seconds    = 15
   }
-
-  depends_on = [data.archive_file.hello_world_zip]
 }
