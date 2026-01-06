@@ -3,24 +3,14 @@
 
 <head>
     <title>Bristol Friendly Book Club</title>
-    <script>
-    const url = 'https://europe-west2-potent-thought-483207-v4.cloudfunctions.net/hello-world'
-    const sayHello = async () => {
-        const name = document.getElementById("nameInput").value;
-        const response = await fetch(`${url}?name=${encodeURIComponent(name)}`, {
-            method: 'GET'
-        });
-        const text = await response.text();
-        document.getElementById("result").innerText = text;
-    }
-    </script>
+    <script type="module" src="/js/home.js"></script>
 </head>
 
 <body>
     <p>This is an example of a simple HTML page with one paragraph. The index file is at frontend/pages/home.html</p>
     
     <input id="nameInput" placeholder="Please enter your name"/>
-    <button type="button" onClick="sayHello()">Hello!</button>
+    <button id="helloBtn">Hello!</button>
     <p id="result"></p>
 </body>
 </html>
