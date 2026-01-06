@@ -1,4 +1,4 @@
-import { getHello } from "./api";
+import { getHello } from "./api.js";
 
 document.getElementById("helloBtn").onClick = async () => {
     const name = document.getElementById("nameInput").value;
