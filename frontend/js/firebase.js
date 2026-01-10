@@ -35,7 +35,7 @@ export function waitForAuthReady() {
 }
 
 export async function getIdToken() {
-    const user = auth.currentUser();
+    const user = auth.currentUser;
     if (!user) {
         throw new Error("User not authenticated yet!");
     }
