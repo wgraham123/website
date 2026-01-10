@@ -22,18 +22,6 @@ if not firebase_admin._apps:
         options={"projectId": "website-98c94"}
     )
 
-firebaseConfig = {
-    "apiKey": "AIzaSyDcwYAQoye1X4YznXtyh_-mLVTxMZWlEe0",
-    "authDomain": "website-98c94.firebaseapp.com",
-    "projectId": "website-98c94",
-    "storageBucket": "website-98c94.firebasestorage.app",
-    "messagingSenderId": "403011854830",
-    "appId": "1:403011854830:web:362f78ac054e8ec0c56eff",
-    "measurementId": "G-9T39V72F1V"
-}
-
-
-
 def cors_response():
     headers = {
         "Access-Control-Allow-Origin": "*",
@@ -42,6 +30,9 @@ def cors_response():
         "Access-Control-Max-Age": "3600"
     }
     return ("", 204, headers)
+
+class HelloRequest(BaseModel):
+    name: str
 
 @functions_framework.http
 def hello_world(request: Request):
