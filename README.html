@@ -1,0 +1,19 @@
+Tech Stack
+
+Frontend:
+    Plain HTML and JS
+
+Backend:
+    All on GCP defined by terraform
+    terraform state stored in GCP bucket
+    GCP Cloud Functions providing api endpoints
+
+CICD:
+    GitHub webhooks + hostinger for frontend deployment on push to main
+    GitHub workflows running terraform using secrects for backend deployment on push to main
+
+Authentication:
+    Firebase anonymous authentication
+
+Web Hosting:
+    Hostinger
