@@ -15,10 +15,8 @@ export async function getHello(name) {
             }
         }
     );
-
     if (!response.ok) {
-        throw new Error(`API error: ${response.status}`);
+        throw new Error(`API error: ${response.status}: ${response.text()}`);
     }
-
     return response.text();
 }

@@ -23,6 +23,8 @@ def hello_world(request: Request):
 
     headers = {"Access-Control-Allow-Origin": "*"}
 
+    print(request.headers)
+
     auth_header = request.headers.get("Authorization")
     if not auth_header or not auth_header.startswith("Bearer "):
         return ("Unauthorized", 401, headers)
