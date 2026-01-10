@@ -27,6 +27,7 @@ def hello_world(request: Request):
 
     auth_header = request.headers.get("Authorization")
     if not auth_header or not auth_header.startswith("Bearer "):
+        print("Missing auth header")
         return ("Unauthorized", 401, headers)
 
     id_token = auth_header.split("Bearer ")[1]
@@ -35,6 +36,7 @@ def hello_world(request: Request):
         decoded_token = auth.verify_id_token(id_token)
         uid = decoded_token["uid"]
     except Exception as e:
+        print(f"Invalid ID Token: {e}")
         return (f"Invalid id token: {e}", 401, headers)
 
     try:

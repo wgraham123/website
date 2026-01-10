@@ -16,7 +16,9 @@ export async function getHello(name) {
         }
     );
     if (!response.ok) {
-        throw new Error(`API error: ${response.status}: ${response.text()}`);
+        throw new Error(
+            `API error: ${response.status}: ${await response.text()}`
+        );
     }
     return response.text();
 }
