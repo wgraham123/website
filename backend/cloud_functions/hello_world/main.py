@@ -10,7 +10,7 @@ def cors_response():
     headers = {
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Allow-Methods": "GET",
-        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Headers": ["Authorization", "Content-Type"],
         "Access-Control-Max-Age": "3600"
     }
     return ("", 204, headers)
