@@ -1,3 +1,7 @@
+data "google_secret_manager_secret" "firebase_sa_key" {
+  secret_id = "firebase_sa_key"
+}
+
 resource "google_cloudfunctions2_function" "hello_world" {
   name        = "hello-world"
   location    = var.location
@@ -18,5 +22,12 @@ resource "google_cloudfunctions2_function" "hello_world" {
     max_instance_count = 1
     available_memory   = "256M"
     timeout_seconds    = 15
+
+    secret_environment_variables {
+      key        = "FIREBASE_SA_KEY"
+      project_id = data.google_secret_manager_secret.firebase_sa_key.project
+      secret     = data.google_secret_manager_secret.firebase_sa_key.secret_id
+      version    = "latest"
+    }
   }
 }

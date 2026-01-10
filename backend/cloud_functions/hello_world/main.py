@@ -1,10 +1,38 @@
+import os
+import json
 import functions_framework
+import firebase_admin
 from firebase_admin import auth, credentials
 from pydantic import BaseModel, ValidationError
 from flask import Request
 
-class HelloRequest(BaseModel):
-    name: str
+FIREBASE_SA_KEY_STR = os.environ.get('FIREBASE_SA_KEY')
+if not FIREBASE_SA_KEY_STR:
+    raise RuntimeError("Environment variable FIREBASE_SA_KEY is missing.")
+try:
+    FIREBASE_SA_KEY_DICT = json.loads(FIREBASE_SA_KEY_STR)
+except json.JSONDecodeError:
+    raise RuntimeError("Environment variable FIREBASE_SA_KEY is malformed.")
+
+cred = credentials.Certificate(FIREBASE_SA_KEY_DICT)
+
+if not firebase_admin._apps:
+    firebase_admin.initialize_app(
+        credential=cred,
+        options={"projectId": "website-98c94"}
+    )
+
+firebaseConfig = {
+    "apiKey": "AIzaSyDcwYAQoye1X4YznXtyh_-mLVTxMZWlEe0",
+    "authDomain": "website-98c94.firebaseapp.com",
+    "projectId": "website-98c94",
+    "storageBucket": "website-98c94.firebasestorage.app",
+    "messagingSenderId": "403011854830",
+    "appId": "1:403011854830:web:362f78ac054e8ec0c56eff",
+    "measurementId": "G-9T39V72F1V"
+}
+
+
 
 def cors_response():
     headers = {
